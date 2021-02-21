@@ -21,11 +21,11 @@ public class HomeServlet extends HttpServlet {
          * exists, send the user to the home page.
          */
         if (session.getAttribute("username") == null || session.getAttribute("username").equals("")) {
-            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            response.sendRedirect("login");
+            return;
         }
-        else {
-            getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
-        }
+
+        getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
     }
 
     @Override
